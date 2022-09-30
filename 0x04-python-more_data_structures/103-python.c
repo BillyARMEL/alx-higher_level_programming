@@ -1,49 +1,39 @@
-nclude <Python.h>
-#include <object.h>
-#include <listobject.h>
-#include <bytesobject.h>
+#!/usr/bin/python3
 
-void print_python_bytes(PyObject *p)
-{
-	long int size;
-	int i;
-	char *trying_str = NULL;
 
-	printf("[.] bytes object info\n");
-	if (!PyBytes_Check(p))
-	{
-		printf("  [ERROR] Invalid Bytes Object\n");
-		return;
-	}
+def roman_to_int(roman_string):
+    if not roman_string or type(roman_string) != str:
+        return 0
+    my_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50,
+               'C': 100, 'D': 500, 'M': 1000}
+    num = 0
 
-	PyBytes_AsStringAndSize(p, &trying_str, &size);
+    for i in range(len(roman_string)):
+        if my_dict.get(roman_string[i], 0) == 0:
+            return 0
 
-	printf("  size: %li\n", size);
-	printf("  trying string: %s\n", trying_str);
-	if (size < 10)
-		printf("  first %li bytes:", size + 1);
-	else
-		printf("  first 10 bytes:");
-	for (i = 0; i <= size && i < 10; i++)
-		printf(" %02hhx", trying_str[i]);
-	printf("\n");
-}
+        if (i != (len(roman_string) - 1) and
+            my_dict[roman_string[i]] < my_dict[roman_string[i + 1]]):
+            num += my_dict[roman_string[i]] * -1
+        else:
+            num += my_dict[roman_string[i]]
+    return (num)#!/usr/bin/python3
 
-void print_python_list(PyObject *p)
-{
-        long int size = PyList_Size(p);
-        int i;
-        PyListObject *list = (PyListObject *)p;
-        const char *type;
 
-        printf("[*] Python list info\n");
-        printf("[*] Size of the Python List = %li\n", size);
-        printf("[*] Allocated = %li\n", list->allocated);
-        for (i = 0; i < size; i++)
-        {
-                type = (list->ob_item[i])->ob_type->tp_name;
-		printf("Element %i: %s\n", i, type);
-                if (!strcmp(type, "bytes"))
-                        print_python_bytes(list->ob_item[i]);
-        }
-}
+def roman_to_int(roman_string):
+    if not roman_string or type(roman_string) != str:
+        return 0
+    my_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50,
+               'C': 100, 'D': 500, 'M': 1000}
+    num = 0
+
+    for i in range(len(roman_string)):
+        if my_dict.get(roman_string[i], 0) == 0:
+            return 0
+
+        if (i != (len(roman_string) - 1) and
+            my_dict[roman_string[i]] < my_dict[roman_string[i + 1]]):
+            num += my_dict[roman_string[i]] * -1
+        else:
+            num += my_dict[roman_string[i]]
+    return (num)
