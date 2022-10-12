@@ -1,8 +1,15 @@
 #!/usr/bin/python3
-class Square():
+"""This module contains a class Square"""
+
+
+class Square:
+    """An empty class that defines a square"""
+
     def __init__(self, size):
-        '''Initialization of instance attributes
-            Args:
-            size (int): The size of the square
-        '''
+        """Instantation of a private attribute 'size'
+
+        Args:
+           size: the size of a square
+
+        """
         self.__size = size
