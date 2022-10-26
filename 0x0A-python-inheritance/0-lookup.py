@@ -2,6 +2,6 @@
 """my lookup module"""
 
 
-def lookup(obj)
+def lookup(obj):
 """Return an attribute and method of an object"""
         return dir(obj)
